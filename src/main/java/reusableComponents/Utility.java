@@ -18,21 +18,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import testBase.TestBase;
 
 public class Utility  extends TestBase {
-	
-	public static void takeScreenShot() {
-		
-		System.out.println("inside screenshot method");
-		File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		System.out.println("after taking screenshot");
+	static String dest;
+	public static void takeScreenShot(String filename) {
+
+		File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
 		try {
-			//Using the time date time stamp to create unique file name for the each screenshot
-			System.out.println("path before");
-			FileUtils.copyFile(screenshotFile, new File ("E:\\Pavani Nadupalli\\Pavani_WorkSpace\\APMT_Automation\\screenshots"+timestamp()+".png"));
-			System.out.println("path after");
-		}catch (IOException e) {
+
+			dest = System.getProperty("user.dir") + "\\Screenshot\\" + timestamp() + ".jpeg";
+			FileUtils.copyFile(screenshotFile, new File(dest));
+		} catch (IOException e) {
 			e.printStackTrace();
-		  
-	}
+
+		}
 	}
 
 	public static String timestamp() {

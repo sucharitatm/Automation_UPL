@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pageObjects.AddUserPageObjects;
 import pageObjects.LoginPageObjects;
@@ -25,6 +28,8 @@ import reusableComponents.PropertiesOperations;
 
 public class TestBase {
 	public static WebDriver driver;
+	public static  ExtentReports extent;
+	public  static ExtentTest test;
 	public LoginPageObjects loginpage;
 	public RegistrationPageObject registrationpageobject;
 	public AddUserPageObjects adduserpageobjects;
@@ -66,6 +71,6 @@ public class TestBase {
 
 	@AfterMethod
 	public void cleanUp() {
-		// driver.close();
+		 driver.quit();
 	}
 }
