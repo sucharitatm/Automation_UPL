@@ -11,9 +11,10 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import pageObjects.AddUserPageObjects;
+//import pageObjects.AddUserPageObjects;
 import pageObjects.LoginPageObjects;
-import pageObjects.RegistrationPageObject;
+import pageObjects.PrerequisitePageObject;
+//import pageObjects.RegistrationPageObject;
 //import pageObjects.HomePageObjects;
 //import pageObjects.LoginPageObjects;
 //import pageObjects.SalesManagerObjects;
@@ -24,15 +25,18 @@ import pageObjects.RegistrationPageObject;
 //import pageObjects.EnterVehicalDataPageObjects;
 //import pageObjects.HomePageObjects;
 //import pageObjects.SelectPriceOptionsPageObjects;
+//import pageObjects.SearchPrerequisite;
 import reusableComponents.PropertiesOperations;
 
 public class TestBase {
 	public static WebDriver driver;
-	public static  ExtentReports extent;
-	public  static ExtentTest test;
+	public static ExtentReports extent;
+	public static ExtentTest test;
 	public LoginPageObjects loginpage;
-	public RegistrationPageObject registrationpageobject;
-	public AddUserPageObjects adduserpageobjects;
+	public PrerequisitePageObject prerequisitePage;
+	//public SearchPrerequisite searchPrerequisite;
+	//public RegistrationPageObject registrationpageobject;
+	//public AddUserPageObjects adduserpageobjects;
 
 	public void LaunchBrowserAndNavigate() throws Exception {
 
@@ -64,13 +68,16 @@ public class TestBase {
 	@BeforeMethod /// it will get execute before each test method within current class
 	public void setupMethod() throws Exception {
 		LaunchBrowserAndNavigate();
-		loginpage=new LoginPageObjects();
-		registrationpageobject=new RegistrationPageObject();
-		adduserpageobjects=new AddUserPageObjects();
+		loginpage = new LoginPageObjects();
+		prerequisitePage = new PrerequisitePageObject();
+		//searchPrerequisite = new SearchPrerequisite();
 	}
-
+}
+	/*
 	@AfterMethod
 	public void cleanUp() {
 		 driver.quit();
 	}
 }
+*/
+

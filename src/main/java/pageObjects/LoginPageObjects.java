@@ -10,37 +10,44 @@ import testBase.TestBase;
 
 public class LoginPageObjects extends TestBase {
 
-	// UPL
-	@FindBy(xpath = "//a[contains(text(),'Login')]")
-	WebElement login;
+    // UPL
+    @FindBy(xpath = "//a[contains(text(),'Login')]")
+    WebElement login;
 
-	@FindBy(xpath = "//input[@name='identifier'] ")
-	WebElement username;
+    @FindBy(xpath = "//input[@name='identifier'] ")
+    WebElement username;
 
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement password;
+    @FindBy(xpath = "//input[@name='password']")
+    WebElement password;
 
-	@FindBy(xpath = "//button[normalize-space()='LOGIN']")
-	WebElement Login;
-	
-	@FindBy(xpath = "//div[contains(text(),'You have successfully LoggedIn')]") WebElement successMsg;
+    @FindBy(xpath = "//button[normalize-space()='LOGIN']")
+    WebElement loginbtn;
 
-	// constructor - to use initElement method
-	public LoginPageObjects() {
-		PageFactory.initElements(driver, this);
-	}
+    @FindBy(xpath = "//div[contains(text(),'You have successfully LoggedIn')]") WebElement successMsg;
 
-	public boolean login() throws Exception {
-		System.out.println(driver);
-		login.click();
-		CommonMethods.sendKeysToElement(username, PropertiesOperations.getPropertyValueByKey("username"));
-		CommonMethods.sendKeysToElement(password, PropertiesOperations.getPropertyValueByKey("password"));
-		Login.click();
-		Thread.sleep(1000);
-		return successMsg.isDisplayed();
-	}
-	
-	public String loginPageTitle() {
-		return driver.getTitle();
-	}
+
+
+
+    // constructor - to use initElement method
+    public LoginPageObjects() {
+        PageFactory.initElements(driver, this);
+    }
+
+    public boolean login() throws Exception {
+        //System.out.println(driver);
+        login.click();
+        Thread.sleep(2000);
+        CommonMethods.sendKeysToElement(username, PropertiesOperations.getPropertyValueByKey("username"));
+        Thread.sleep(2000);
+        CommonMethods.sendKeysToElement(password, PropertiesOperations.getPropertyValueByKey("password"));
+        Thread.sleep(2000);
+        loginbtn.click();
+        Thread.sleep(1000);
+
+        return successMsg.isDisplayed();
+    }
+
+    public String loginPageTitle() {
+        return driver.getTitle();
+    }
 }
